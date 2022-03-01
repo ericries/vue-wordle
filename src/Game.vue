@@ -182,7 +182,7 @@ function genResultGrid() {
     <h1>Encantle</h1>
     <a
       id="source-link"
-      href="https://github.com/yyx990803/vue-wordle"
+      href="https://github.com/ericries/vue-wordle-encantle"
       target="_blank"
       >Source</a
     >

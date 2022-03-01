@@ -38,7 +38,7 @@ export function getWordOfTheDay() {
 // copied from Wordle source
 const answers = [
 
-   'adiós',
+   'adios',
    'after',
    'bless',
    'bring',
@@ -50,7 +50,7 @@ const answers = [
    'earth',
    'empty',
    'every',
-   'félix',
+   'felix',
    'fifty',
    'first',
    'gifts',
