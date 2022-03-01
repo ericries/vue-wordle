@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [vue({
     reactivityTransform: true
   })],
-  base: '/vue-wordle-encantle'
+  base: '/vue-wordle-encantle/dist'
 })
