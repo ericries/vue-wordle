@@ -72,7 +72,7 @@ function clearTile() {
 
 function completeRow() {
   if (currentRow.every((tile) => tile.letter)) {
-    const guess = currentRow.map((tile) => tile.letter).join('')
+    const guess = currentRow.map((tile) => tile.letter).join('').toLowerCase()
     if (!allWords.includes(guess) && guess !== answer) {
       shake()
       showMessage(`Not in word list`)
@@ -179,7 +179,7 @@ function genResultGrid() {
     </div>
   </Transition>
   <header>
-    <h1>VVORDLE</h1>
+    <h1>Encantle</h1>
     <a
       id="source-link"
       href="https://github.com/yyx990803/vue-wordle"
