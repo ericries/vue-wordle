@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onUnmounted } from 'vue'
+import { onUnmounted, onMounted } from 'vue'
 import { getWordOfTheDay, allWords } from './words'
 import Keyboard from './Keyboard.vue'
 import { LetterState } from './types'
+
 
 // Get word of the day
 const answer = getWordOfTheDay()
@@ -24,6 +25,7 @@ const currentRow = $computed(() => board[currentRowIndex])
 // Feedback state: message and shake
 let message = $ref('')
 let grid = $ref('')
+let movieLine = $ref('')
 let shakeRowIndex = $ref(-1)
 let success = $ref(false)
 
@@ -40,6 +42,16 @@ window.addEventListener('keyup', onKeyup)
 onUnmounted(() => {
   window.removeEventListener('keyup', onKeyup)
 })
+
+import json from "./subtitle.json";
+let wordMap = []
+
+
+onMounted(() => {
+    json.captions.forEach(element => {element.content.normalize("NFD").replace(/\p{Diacritic}/gu, "").match(/\b(\w+)\b/g).forEach(word => {if(word.length == 5) {wordMap[word.toLowerCase()] = element}})});
+    //console.log(wordMap)
+	     })
+
 
 function onKey(key: string) {
   if (!allowInput) return
@@ -111,7 +123,12 @@ function completeRow() {
     if (currentRow.every((tile) => tile.state === LetterState.CORRECT)) {
       // yay!
       setTimeout(() => {
-        grid = genResultGrid()
+      
+          grid = genResultGrid()
+	  try {
+	      movieLine = wordMap[answer].content
+	  } catch(e) {
+	  }
         showMessage(
           ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][
             currentRowIndex
@@ -176,6 +193,7 @@ function genResultGrid() {
     <div class="message" v-if="message">
       {{ message }}
       <pre v-if="grid">{{ grid }}</pre>
+    <pre v-if="movieLine" v-html="movieLine"></pre>
     </div>
   </Transition>
   <header>
