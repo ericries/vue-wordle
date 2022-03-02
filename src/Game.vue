@@ -197,10 +197,10 @@ function genResultGrid() {
     </div>
   </Transition>
   <header>
-    <h1>Encantle</h1>
+    <h1>Encandle</h1>
     <a
       id="source-link"
-      href="https://github.com/ericries/vue-wordle-encantle"
+      href="https://github.com/ericries/vue-wordle-encandle"
       target="_blank"
       >Source</a
     >
