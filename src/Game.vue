@@ -48,7 +48,7 @@ let wordMap = []
 
 
 onMounted(() => {
-    json.captions.forEach(element => {element.content.normalize("NFD").replace(/\p{Diacritic}/gu, "").match(/\b(\w+)\b/g).forEach(word => {if(word.length == 5) {wordMap[word.toLowerCase()] = element}})});
+    json.captions.forEach(element => {element.content.normalize("NFD").replace(/\p{Diacritic}/gu, "").match(/\b(\w+)\b(?!:)/g).forEach(word => {if(word.length == 5) {wordMap[word.toLowerCase()] = element}})});
     //console.log(wordMap)
 	     })
 
