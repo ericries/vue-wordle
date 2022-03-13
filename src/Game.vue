@@ -24,6 +24,7 @@ const currentRow = $computed(() => board[currentRowIndex])
 
 // Feedback state: message and shake
 let message = $ref('')
+let aboutMessage = $ref('')
 let grid = $ref('')
 let movieLine = $ref('')
 let shakeRowIndex = $ref(-1)
@@ -44,11 +45,30 @@ onUnmounted(() => {
 })
 
 import json from "./subtitle.json";
-let wordMap = []
-
+let wordMap = new Map();
 
 onMounted(() => {
-    json.captions.forEach(element => {element.content.normalize("NFD").replace(/\p{Diacritic}/gu, "").match(/\b(\w+)\b(?!:)/g).forEach(word => {if(word.length == 5) {wordMap[word.toLowerCase()] = element}})});
+
+    let bufArr = new Array();
+    let linesArr = new Array();
+    json.captions.forEach(element => {
+
+	bufArr.push(element.content);
+	if( bufArr.length > 2 ) {
+	    bufArr.shift();
+	}
+	linesArr.push(bufArr.join("\n"));
+    });
+    //console.log(linesArr);
+    
+    linesArr.forEach(element => {element.normalize("NFD").replace(/\p{Diacritic}/gu, "").match(/\b(\w+)\b(?!:)/g).filter(word => word.toUpperCase() != word).filter(word => word.length == 5).map(word => word.toLowerCase()).forEach(word => {
+	if (wordMap.has(word)) {
+	    //console.log(wordMap.get(word))
+	} else {
+	    wordMap.set(word, new Array())
+	}  
+	wordMap.get(word).push(element)
+    })});
     //console.log(wordMap)
 	     })
 
@@ -65,7 +85,7 @@ function onKey(key: string) {
 }
 
 function fillTile(letter: string) {
-  for (const tile of currentRow) {
+    for (const tile of currentRow) {
     if (!tile.letter) {
       tile.letter = letter
       break
@@ -125,9 +145,9 @@ function completeRow() {
       setTimeout(() => {
       
           grid = genResultGrid()
-	  try {
-	      movieLine = wordMap[answer].content
-	  } catch(e) {
+	  if (wordMap.has(answer)) {
+	      let lines = wordMap.get(answer);
+	      movieLine = lines[Math.floor(Math.random()*lines.length)];
 	  }
         showMessage(
           ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][
@@ -164,6 +184,14 @@ function showMessage(msg: string, time = 1000) {
   }
 }
 
+function showAboutMessage(msg: string) {
+    aboutMessage = msg
+}
+
+function hideAboutMessage() {
+    aboutMessage = ''
+}
+
 function shake() {
   shakeRowIndex = currentRowIndex
   setTimeout(() => {
@@ -196,13 +224,25 @@ function genResultGrid() {
     <pre v-if="movieLine" v-html="movieLine"></pre>
     </div>
   </Transition>
-  <header>
+    <Transition>
+        <div class="message" v-if="aboutMessage">
+    <pre>{{ aboutMessage }}</pre>
+    Let's go, let's go
+    <button>
+    <span id="close" aria-hidden="true" v-on:click.prevent="hideAboutMessage()">&times;</span>
+    </button>
+
+</div>
+  
+</Transition>
+    <header>
     <h1>Encandle</h1>
     <a
       id="source-link"
-      href="https://github.com/ericries/vue-wordle-encandle"
+      href=""
+v-on:click.prevent="showAboutMessage('Welcome to Encandle!\n\nAny English word is a valid guess, but\nall answers are taken from the movie.',10000)"
       target="_blank"
-      >Source</a
+      >About</a
     >
   </header>
   <div id="board">
@@ -388,5 +428,20 @@ function genResultGrid() {
   .tile {
     font-size: 3vh;
   }
+}
+
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+
+#close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
 }
 </style>

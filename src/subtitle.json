@@ -513,11 +513,7 @@
       "startTime": "00:07:22.985"
     },
     {
-      "content": "-<i>Isabela and Luisa\n</i>-<i>Isabela and Luisa</i>",
-      "startTime": "00:07:24.695"
-    },
-    {
-      "content": "<i>One strong, one graceful\nPerfect in every way</i>",
+      "content": "-<i>Isabela and Luisa\n</i>-<i>Isabela and Luisa</i>\nOne strong, one graceful\nPerfect in every way</i>",
       "startTime": "00:07:26.446"
     },
     {
@@ -1289,15 +1285,7 @@
       "startTime": "00:16:50.719"
     },
     {
-      "content": "Fifty years ago,",
-      "startTime": "00:17:01.063"
-    },
-    {
-      "content": "in our darkest moment,",
-      "startTime": "00:17:04.358"
-    },
-    {
-      "content": "this candle blessed us with a miracle.",
+      "content": "Fifty years ago, in our darkest moment, this candle blessed us with a miracle.",
       "startTime": "00:17:08.028"
     },
     {
@@ -1913,11 +1901,7 @@
       "startTime": "00:31:34.520"
     },
     {
-      "content": "Oh, and Luisa,",
-      "startTime": "00:31:36.855"
-    },
-    {
-      "content": "I heard her eye twitching\nall night. (SQUEAKS)",
+      "content": "Oh, and Luisa, I heard her eye twitching\nall night. (SQUEAKS)",
       "startTime": "00:31:38.440"
     },
     {
@@ -2349,7 +2333,7 @@
       "startTime": "00:35:57.199"
     },
     {
-      "content": "<i>As it heard\nHow big the iceberg is</i>",
+      "content": "<i>Has it heard\nHow big the iceberg is</i>",
       "startTime": "00:35:58.534"
     },
     {
@@ -2957,7 +2941,7 @@
       "startTime": "00:46:38.215"
     },
     {
-      "content": "<i>Why did he tell her?</i>",
+      "content": "<i>Why did he tell us?</i>",
       "startTime": "00:46:40.843"
     },
     {
@@ -2965,7 +2949,7 @@
       "startTime": "00:46:42.761"
     },
     {
-      "content": "<i>Abuela gets the umbrella</i>",
+      "content": "<i>Abuela gets the umbrellas</i>",
       "startTime": "00:46:45.138"
     },
     {
@@ -5566,7 +5550,7 @@
       "startTime": "01:26:40.367"
     },
     {
-      "content": "<i>Roll me down the road\nRoll me down the road</i>",
+      "content": "<i>We're only down the road\nWe're only down the road</i>",
       "startTime": "01:26:44.413"
     },
     {
@@ -5662,11 +5646,7 @@
       "startTime": "01:27:51.104"
     },
     {
-      "content": "<i>You write your own poetry</i>",
-      "startTime": "01:27:52.814"
-    },
-    {
-      "content": "<i>Every night\nWhen you go to sleep</i>",
+      "content": "<i>You write your own poetry</i><i>Every night\nWhen you go to sleep</i>",
       "startTime": "01:27:53.899"
     },
     {
@@ -5790,15 +5770,7 @@
       "startTime": "01:33:48.962"
     },
     {
-      "content": "<i>In love and yearning</i>",
-      "startTime": "01:33:51.632"
-    },
-    {
-      "content": "<i>Spend every evening\nAnd morning learning</i>",
-      "startTime": "01:33:54.092"
-    },
-    {
-      "content": "<i>To hold each other\nTheir hunger burning</i>",
+      "content": "<i>In love and yearning</i><i>Spend every evening\nAnd morning learning</i><i>To hold each other\nTheir hunger burning</i>",
       "startTime": "01:33:58.889"
     },
     {
