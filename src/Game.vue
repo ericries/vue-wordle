@@ -44,8 +44,11 @@ onUnmounted(() => {
   window.removeEventListener('keyup', onKeyup)
 })
 
+
 import json from "./subtitle.json";
 let wordMap = new Map();
+
+
 
 onMounted(() => {
 
@@ -57,7 +60,10 @@ onMounted(() => {
 	if( bufArr.length > 2 ) {
 	    bufArr.shift();
 	}
-	linesArr.push(bufArr.join("\n"));
+	let candidate = bufArr.join("\n");
+	if( !candidate.match("[,]$") ) {
+	    linesArr.push(candidate);
+	}
     });
     //console.log(linesArr);
     
@@ -65,9 +71,9 @@ onMounted(() => {
 	if (wordMap.has(word)) {
 	    //console.log(wordMap.get(word))
 	} else {
-	    wordMap.set(word, new Array())
+	    wordMap.set(word, new Set())
 	}  
-	wordMap.get(word).push(element)
+	wordMap.get(word).add(element)
     })});
     //console.log(wordMap)
 	     })
@@ -146,8 +152,10 @@ function completeRow() {
       
           grid = genResultGrid()
 	  if (wordMap.has(answer)) {
-	      let lines = wordMap.get(answer);
-	      movieLine = lines[Math.floor(Math.random()*lines.length)];
+	      let lines = Array.from(wordMap.get(answer));
+	      //pickMovieLine(lines);
+	      rotateMovieLines(lines);
+	      
 	  }
         showMessage(
           ['Genius', 'Magnificent', 'Impressive', 'Splendid', 'Great', 'Phew'][
@@ -173,6 +181,17 @@ function completeRow() {
     shake()
     showMessage('Not enough letters')
   }
+}
+
+function pickMovieLine(lines) {
+    movieLine = lines[Math.floor(Math.random()*lines.length)];
+}
+
+function rotateMovieLines(lines) {
+    pickMovieLine(lines);
+    setTimeout(() => {
+	rotateMovieLines(lines)
+    }, 10000);
 }
 
 function showMessage(msg: string, time = 1000) {
