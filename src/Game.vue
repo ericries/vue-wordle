@@ -246,6 +246,10 @@ function genResultGrid() {
     <Transition>
         <div class="message" v-if="aboutMessage">
     <pre>{{ aboutMessage }}</pre>
+
+<p/>
+<a href="/">Daily Encandle</a> - <a href="?random">Random Encandle</a>
+    <p/>
     Let's go, let's go
     <button>
     <span id="close" aria-hidden="true" v-on:click.prevent="hideAboutMessage()">&times;</span>

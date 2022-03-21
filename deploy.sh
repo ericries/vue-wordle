@@ -6,11 +6,12 @@ set -e
 # build
 npm run build
 
-# if you are deploying to a custom domain
-#echo 'encandle.org' > CNAME
 
 # navigate into the build output directory
 cd dist
+
+# if you are deploying to a custom domain
+echo 'encandle.org' > CNAME
 
 
 git add --all
