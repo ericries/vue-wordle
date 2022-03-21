@@ -118,7 +118,6 @@ const answers = [
    'cream',
    'crust',
    'cures',
-   'doesn',
    'doing',
    'donna',
    'dream',
